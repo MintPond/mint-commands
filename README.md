@@ -11,7 +11,7 @@ __Install as Dependency in NodeJS Project__
 npm config set @mintpond:registry https://npm.pkg.github.com/mintpond
 npm config set //npm.pkg.github.com/:_authToken <PERSONAL_ACCESS_TOKEN>
 
-npm install @mintpond/mint-commands@1.0.0 --save
+npm install @mintpond/mint-commands@2.0.0 --save
 ```
 [Creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 
