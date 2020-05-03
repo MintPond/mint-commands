@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@mintpond/mint-precon": "^1.0.0",
-    "@mintpond/mint-utils": "^1.2.1"
+    "@mintpond/mint-utils": "^2.0.0"
   },
   "devDependencies": {
     "mocha": "^5.2.0"
