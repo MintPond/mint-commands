@@ -138,13 +138,9 @@ class Commands {
     }
 
 
+    static get CLASS_ID() { return '207a2bfa2d86406c87151b14186cc0b2d2cf722539298edfe6328f2a52785a9a'; }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'Commands') &&
-            pu.isFunction(obj.define) &&
-            pu.isFunction(obj.get) &&
-            pu.isFunction(obj.getAll) &&
-            pu.isFunction(obj.isPath) &&
-            pu.hasGetters(obj, 'pathsArr');
+        return pu.isInstanceOfById(obj, Commands.CLASS_ID);
     }
 }
 

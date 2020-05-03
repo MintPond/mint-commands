@@ -3,7 +3,8 @@
 const
     precon = require('@mintpond/mint-precon'),
     mu = require('@mintpond/mint-utils'),
-    pu = require('@mintpond/mint-utils').prototypes;
+    pu = require('@mintpond/mint-utils').prototypes,
+    CommandParameter = require('./class.CommandParameter');
 
 
 /**
@@ -18,7 +19,7 @@ class CommandArg {
      * @param value {string|boolean} The argument value.
      */
     constructor(parameter, value) {
-        precon.notNull(parameter, 'parameter');
+        precon.instanceOf(parameter, CommandParameter, 'parameter');
 
         const _ = this;
         const isDefaultValue = (!mu.isString(value) && !mu.isBoolean(value)) || value === '' || value === false;
@@ -66,9 +67,13 @@ class CommandArg {
     }
 
 
+    static get CLASS_ID() { return '2071f2d2438e2e402e88706a9ddc8851961001b81104606f8ad9e8c109f340ad'; }
+    static TEST_INSTANCE(CommandArg) {
+        const parameter = new CommandParameter('param');
+        return new CommandArg(parameter, '');
+    }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'CommandArg') &&
-            pu.hasGetters(obj, 'name', 'parameter', 'value', 'isDefaultValue');
+        return pu.isInstanceOfById(obj, CommandArg.CLASS_ID);
     }
 }
 

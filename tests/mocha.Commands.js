@@ -136,43 +136,4 @@ describe('Commands', () => {
             assert.strictEqual(commands.isPath('this.issnt.a.test'), false);
         });
     });
-
-    describe('instanceof handling', () => {
-        beforeEach(globalBe);
-
-        it('should return true when the instance is exact', () => {
-            assert.strictEqual(commands instanceof MCommands, true);
-        });
-
-        it('should return false when the instance is NOT exact', () => {
-
-            class NotCommands {}
-            const not = new NotCommands();
-
-            assert.strictEqual(not instanceof MCommands, false);
-        });
-
-        it('should return true when the instance extends the valid class', () => {
-
-            class ExtendedCommands extends MCommands {}
-            const extended = new ExtendedCommands();
-
-            assert.strictEqual(extended instanceof MCommands, true);
-        });
-
-        it('should return true if the instance meets all of the API criteria', () => {
-
-            class Commands {
-                define() {}
-                get() {}
-                getAll() {}
-                isPath() {}
-                get pathsArr() {}
-            }
-
-            const substitute = new Commands();
-
-            assert.strictEqual(substitute instanceof MCommands, true);
-        });
-    });
 });

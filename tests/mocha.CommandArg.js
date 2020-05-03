@@ -102,46 +102,5 @@ describe('CommandArg', () => {
             assert.strictEqual(cmdArg.isDefaultValue, true);
         });
     });
-
-    describe('instanceof handling', () => {
-        beforeEach(() => {
-            cmdParam = new CommandParameter('param1=abc');
-            cmdArg = new MCommandArg(cmdParam, '');
-        });
-
-        it('should return true when the instance is exact', () => {
-            assert.strictEqual(cmdArg instanceof MCommandArg, true);
-        });
-
-        it('should return false when the instance is NOT exact', () => {
-
-            class NotCommandArg {}
-            const not = new NotCommandArg();
-
-            assert.strictEqual(not instanceof MCommandArg, false);
-        });
-
-        it('should return true when the instance extends the valid class', () => {
-
-            class ExtendedCommandArg extends MCommandArg {}
-            const extended = new ExtendedCommandArg(cmdParam, '');
-
-            assert.strictEqual(extended instanceof MCommandArg, true);
-        });
-
-        it('should return true if the instance meets all of the API criteria', () => {
-
-            class CommandArg {
-                get name() {}
-                get parameter() {}
-                get value() {}
-                get isDefaultValue() {}
-            }
-
-            const substitute = new CommandArg();
-
-            assert.strictEqual(substitute instanceof MCommandArg, true);
-        });
-    });
 });
 

@@ -180,12 +180,9 @@ class CommandDispatcher {
     }
 
 
+    static get CLASS_ID() { return '6ec90b767aefe0ff80d5bdba32a819c39810f829f6bcd0c4bdb5f2140f650008'; }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'CommandDispatcher') &&
-            pu.isFunction(obj.addCommand) &&
-            pu.isFunction(obj.parseQuery) &&
-            pu.isFunction(obj.execute) &&
-            pu.isFunction(obj.help);
+        return pu.isInstanceOfById(obj, CommandDispatcher.CLASS_ID);
     }
 }
 

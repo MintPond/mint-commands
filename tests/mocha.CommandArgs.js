@@ -50,42 +50,4 @@ describe('CommandArgs', () => {
         assert.strictEqual(args.argsOMap['option1'], 'value2');
         assert.strictEqual(args.argsOMap['flag1'], true);
     });
-
-    describe('instanceof handling', () => {
-        beforeEach(globalBe);
-
-        it('should return true when the instance is exact', () => {
-            assert.strictEqual(args instanceof MCommandArgs, true);
-        });
-
-        it('should return false when the instance is NOT exact', () => {
-
-            class NotCommandArgs {}
-            const not = new NotCommandArgs();
-
-            assert.strictEqual(not instanceof MCommandArgs, false);
-        });
-
-        it('should return true when the instance extends the valid class', () => {
-
-            class ExtendedCommandArgs extends MCommandArgs {}
-            const extended = new ExtendedCommandArgs(cmd);
-
-            assert.strictEqual(extended instanceof MCommandArgs, true);
-        });
-
-        it('should return true if the instance meets all of the API criteria', () => {
-
-            class CommandArgs {
-                get paramsArr() {}
-                get optionsOMap() {}
-                get flagsOMap() {}
-                get argsOMap() {}
-            }
-
-            const substitute = new CommandArgs();
-
-            assert.strictEqual(substitute instanceof MCommandArgs, true);
-        });
-    });
 });

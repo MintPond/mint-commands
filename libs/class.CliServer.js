@@ -222,10 +222,13 @@ class CliServer extends EventEmitter {
     }
 
 
+    static get CLASS_ID() { return '5c7a53e02e2ee02b878b5c20e589af10c0ce4bf3635a6eb400fdfb493569f405'; }
+    static TEST_INSTANCE(CliServer) {
+        const dispatcher = new CommandDispatcher();
+        return new CliServer({ cmdDispatcher: dispatcher });
+    }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'CliServer') &&
-            pu.isFunction(obj.start) &&
-            pu.isFunction(obj.stop);
+        return pu.isInstanceOfById(obj, CliServer.CLASS_ID);
     }
 }
 

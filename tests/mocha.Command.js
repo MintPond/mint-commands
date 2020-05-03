@@ -74,47 +74,4 @@ describe('Command', () => {
     it('should have correct description', () => {
         assert.strictEqual(cmd.description, 'command description');
     });
-
-    describe('instanceof handling', () => {
-        beforeEach(globalBe);
-
-        it('should return true when the instance is exact', () => {
-            assert.strictEqual(cmd instanceof MCommand, true);
-        });
-
-        it('should return false when the instance is NOT exact', () => {
-
-            class NotAdaptiveConfig {}
-            const not = new NotAdaptiveConfig();
-
-            assert.strictEqual(not instanceof MCommand, false);
-        });
-
-        it('should return true when the instance extends the valid class', () => {
-
-            class ExtendedCommand extends MCommand {}
-            const extended = new ExtendedCommand({ path: 'command1' });
-
-            assert.strictEqual(extended instanceof MCommand, true);
-        });
-
-        it('should return true if the instance meets all of the API criteria', () => {
-
-            class Command {
-                execute() {}
-                get path() {}
-                get paramsArr() {}
-                get optionsArr() {}
-                get flagsArr() {}
-                get description() {}
-                get usage() {}
-                get verboseUsage() {}
-                get extra() {}
-            }
-
-            const substitute = new Command();
-
-            assert.strictEqual(substitute instanceof MCommand, true);
-        });
-    });
 });

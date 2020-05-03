@@ -105,9 +105,12 @@ class CommandParameter {
     }
 
 
+    static get CLASS_ID() { return 'a5d67b2d3a11f997878f1f1cbfda52afbac6b22b378d11e09f67395746a05839'; }
+    static TEST_INSTANCE(CommandParameter) {
+        return new CommandParameter([]);
+    }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'CommandParameter') &&
-            pu.hasGetters(obj, 'name', 'hasDefaultValue', 'defaultValue', 'description');
+        return pu.isInstanceOfById(obj, CommandParameter.CLASS_ID);
     }
 }
 

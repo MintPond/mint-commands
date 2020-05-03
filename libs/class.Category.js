@@ -41,9 +41,10 @@ class Category extends Command {
     }
 
 
+    static get CLASS_ID() { return '82321b608cd4904118a208dfb57e8ba4c5b8b70a8663deb07bfe3b71ee4f24b7'; }
+    static TEST_INSTANCE(Category) { return new Category({ path: 'test' }); }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'Category') &&
-            obj instanceof Command;
+        return pu.isInstanceOfById(obj, Category.CLASS_ID);
     }
 }
 

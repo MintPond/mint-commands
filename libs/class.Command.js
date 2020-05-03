@@ -227,11 +227,10 @@ class Command {
     }
 
 
+    static get CLASS_ID() { return 'e526b5ede60fd5004837c9af35c9b019b77b1da9d2efcaa22e34abba756bdeb4'; }
+    static TEST_INSTANCE(Command) { return new Command({ path: 'test' }); }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'Command') &&
-            pu.isFunction(obj.execute) &&
-            pu.hasGetters(obj, 'path', 'paramsArr', 'optionsArr', 'flagsArr', 'description',
-                'usage', 'verboseUsage', 'extra');
+        return pu.isInstanceOfById(obj, Command.CLASS_ID);
     }
 }
 

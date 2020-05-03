@@ -3,6 +3,7 @@
 const
     precon = require('@mintpond/mint-precon'),
     pu = require('@mintpond/mint-utils').prototypes,
+    Command = require('./class.Command'),
     CommandArg = require('./class.CommandArg');
 
 
@@ -18,7 +19,7 @@ class CommandArgs {
      * @param [args] {{params:CommandArg[],options:{},flags:{}}}
      */
     constructor(command, args) {
-        precon.notNull(command, 'command');
+        precon.instanceOf(command, Command, 'command');
         precon.opt_obj(args, 'args');
 
         args = args || {};
@@ -90,9 +91,13 @@ class CommandArgs {
     }
 
 
+    static get CLASS_ID() { return '6554229d370ac711a9964748a9dc3767ad8f22e7e7f553be52f8cd9c39be4993'; }
+    static TEST_INSTANCE(CommandArgs) {
+        const command = new Command({ path: 'test' });
+        return new CommandArgs(command);
+    }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'CommandArgs') &&
-            pu.hasGetters(obj, 'paramsArr', 'optionsOMap', 'flagsOMap', 'argsOMap');
+        return pu.isInstanceOfById(obj, CommandArgs.CLASS_ID);
     }
 }
 

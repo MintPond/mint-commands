@@ -162,45 +162,4 @@ describe('CommandDispatcher', () => {
             });
         })
     });
-
-
-    describe('instanceof handling', () => {
-        beforeEach(() => {
-            dispatcher = new MCommandDispatcher();
-        });
-
-        it('should return true when the instance is exact', () => {
-            assert.strictEqual(dispatcher instanceof MCommandDispatcher, true);
-        });
-
-        it('should return false when the instance is NOT exact', () => {
-
-            class NotCommandDispatcher {}
-            const not = new NotCommandDispatcher();
-
-            assert.strictEqual(not instanceof MCommandDispatcher, false);
-        });
-
-        it('should return true when the instance extends the valid class', () => {
-
-            class ExtendedCommandDispatcher extends MCommandDispatcher {}
-            const extended = new ExtendedCommandDispatcher();
-
-            assert.strictEqual(extended instanceof MCommandDispatcher, true);
-        });
-
-        it('should return true if the instance meets all of the API criteria', () => {
-
-            class CommandDispatcher {
-                addCommand() {}
-                parseQuery() {}
-                execute() {}
-                help() {}
-            }
-
-            const substitute = new CommandDispatcher();
-
-            assert.strictEqual(substitute instanceof MCommandDispatcher, true);
-        });
-    });
 });
