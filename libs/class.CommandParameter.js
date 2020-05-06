@@ -32,10 +32,7 @@ class CommandParameter {
         else if (mu.isObject(param)) {
 
             precon.string(param.name, 'name');
-            if (isFlag) {
-                precon.undef(param.defaultValue, 'defaultValue');
-            }
-            else {
+            if (!isFlag) {
                 precon.opt_string(param.defaultValue, 'defaultValue');
             }
             precon.opt_string(param.description, 'description');
