@@ -4,7 +4,6 @@ const
     assert = require('assert'),
     Command = require('./../libs/class.Command'),
     CommandArg = require('./../libs/class.CommandArg'),
-    MCommandArgs = require('./../libs/class.CommandArgs'),
     argParser = require('./../libs/service.argParser');
 
 let cmd;
@@ -49,5 +48,24 @@ describe('CommandArgs', () => {
         assert.strictEqual(args.argsOMap['param1'], 'value1');
         assert.strictEqual(args.argsOMap['option1'], 'value2');
         assert.strictEqual(args.argsOMap['flag1'], true);
+    });
+
+    it('should have correct toJSON return value', () => {
+        const jsonObj = args.toJSON();
+
+        assert.strictEqual(Array.isArray(jsonObj.params), true);
+        assert.strictEqual(jsonObj.params.length, 1);
+        assert.strictEqual(jsonObj.params[0].name, 'param1');
+
+        assert.strictEqual(typeof jsonObj.options, 'object');
+        assert.strictEqual(jsonObj.options.option1.name, 'option1');
+
+        assert.strictEqual(typeof jsonObj.flags, 'object');
+        assert.strictEqual(jsonObj.flags.flag1.name, 'flag1');
+
+        assert.strictEqual(typeof jsonObj.args, 'object');
+        assert.strictEqual(jsonObj.args.param1, 'value1');
+        assert.strictEqual(jsonObj.args.option1, 'value2');
+        assert.strictEqual(jsonObj.args.flag1, true);
     });
 });

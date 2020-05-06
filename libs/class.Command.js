@@ -139,9 +139,9 @@ class Command {
         const _ = this;
         return {
             path: _.path,
-            params: _.params,
-            options: _.options,
-            flags: _.flags,
+            params: _.paramsArr,
+            options: _.optionsArr,
+            flags: _.flagsArr,
             extra: _.extra,
             usage: _.usage,
             description: _.description

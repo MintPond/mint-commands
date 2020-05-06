@@ -74,4 +74,28 @@ describe('Command', () => {
     it('should have correct description', () => {
         assert.strictEqual(cmd.description, 'command description');
     });
+
+    it('should have correct toJSON return value', () => {
+        const jsonObj = cmd.toJSON();
+        assert.strictEqual(jsonObj.path, 'category.command');
+
+        assert.strictEqual(Array.isArray(jsonObj.params), true);
+        assert.strictEqual(jsonObj.params.length, 2);
+        assert.strictEqual(jsonObj.params[0].name, 'param1');
+        assert.strictEqual(jsonObj.params[1].name, 'param2');
+
+        assert.strictEqual(Array.isArray(jsonObj.options), true);
+        assert.strictEqual(jsonObj.options.length, 2);
+        assert.strictEqual(jsonObj.options[0].name, 'option1');
+        assert.strictEqual(jsonObj.options[1].name, 'option2');
+
+        assert.strictEqual(Array.isArray(jsonObj.flags), true);
+        assert.strictEqual(jsonObj.flags.length, 2);
+        assert.strictEqual(jsonObj.flags[0].name, 'flag1');
+        assert.strictEqual(jsonObj.flags[1].name, 'flag2');
+
+        assert.deepEqual(jsonObj.extra, cmd.extra);
+        assert.strictEqual(jsonObj.usage, cmd.usage);
+        assert.strictEqual(jsonObj.description, cmd.description);
+    });
 });

@@ -32,6 +32,13 @@ describe('CommandArg', () => {
         it('should return correct value from isDefaultValue', () => {
             assert.strictEqual(cmdArg.isDefaultValue, false);
         });
+
+        it('should have correct toJSON return value', () => {
+            const jsonObj = cmdArg.toJSON();
+            assert.strictEqual(jsonObj.name, 'param1');
+            assert.strictEqual(jsonObj.value, 'value1');
+            assert.strictEqual(jsonObj.isDefaultValue, false);
+        });
     });
 
     context('no value, no default specified', () => {
@@ -54,6 +61,13 @@ describe('CommandArg', () => {
 
         it('should return correct value from isDefaultValue', () => {
             assert.strictEqual(cmdArg.isDefaultValue, true);
+        });
+
+        it('should have correct toJSON return value', () => {
+            const jsonObj = cmdArg.toJSON();
+            assert.strictEqual(jsonObj.name, 'param1');
+            assert.strictEqual(jsonObj.value, '');
+            assert.strictEqual(jsonObj.isDefaultValue, true);
         });
     });
 
@@ -78,6 +92,13 @@ describe('CommandArg', () => {
         it('should return correct value from isDefaultValue', () => {
             assert.strictEqual(cmdArg.isDefaultValue, false);
         });
+
+        it('should have correct toJSON return value', () => {
+            const jsonObj = cmdArg.toJSON();
+            assert.strictEqual(jsonObj.name, 'param1');
+            assert.strictEqual(jsonObj.value, 'value1');
+            assert.strictEqual(jsonObj.isDefaultValue, false);
+        });
     });
 
     context('no value, with default specified', () => {
@@ -100,6 +121,13 @@ describe('CommandArg', () => {
 
         it('should return correct value from isDefaultValue', () => {
             assert.strictEqual(cmdArg.isDefaultValue, true);
+        });
+
+        it('should have correct toJSON return value', () => {
+            const jsonObj = cmdArg.toJSON();
+            assert.strictEqual(jsonObj.name, 'param1');
+            assert.strictEqual(jsonObj.value, 'abc');
+            assert.strictEqual(jsonObj.isDefaultValue, true);
         });
     });
 });
