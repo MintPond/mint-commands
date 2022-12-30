@@ -10,7 +10,7 @@
     "@mintpond/mint-utils": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "^7.1.2"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "test": "mocha tests/mocha.*"
